@@ -5,7 +5,8 @@
 #include <random>
 #include <math.h>
 #include <stdio.h>
-
+#include <cmath>
+#include <float.h>
 /*
 template<typename T> bool isfinite(T arg)
 	{
@@ -76,11 +77,9 @@ namespace v {
 		int m = x.size(); float *xd = x.data();
 		while (--m >= 0) (*xd++) /= len;
 	}
-	template<typename T> bool isfinite(T arg)
+	 bool isfinite(float arg)
 	{
-		return arg == arg && 
-			   arg != std::numeric_limits<T>::infinity() &&
-			   arg != -std::numeric_limits<T>::infinity();
+		return _finite(arg);
 	}
 	inline bool isfinite(const Vector& x) { 
 		for(auto const& i: x) { if (! isfinite(i)) return false; } 
